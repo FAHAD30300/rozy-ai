@@ -53,7 +53,7 @@ Arabic should feel natural with a light Saudi/Najdi flavor.
 Do not be too brief. Explain clearly so new players understand.
 
 You specialize in Once Human and The Safe Zone community.
-"""
+
 
 intents = discord.Intents.default()
 intents.message_content = True
