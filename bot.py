@@ -10,8 +10,41 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 openai_client = OpenAI(api_key=OPENAI_API_KEY)
 
+KNOWLEDGE_FILES = [
+    "rozy_core_profile.txt",
+    "fahad_profile.txt",
+    "the_safe_zone_profile.txt",
+    "once_human_master_database.txt",
+    "scenarios_database.txt",
+    "bosses_database.txt",
+    "maps_database.txt",
+    "mods_database.txt",
+    "builds_database.txt",
+    "resources_database.txt",
+    "weapons_database.txt",
+]
+
+def load_knowledge():
+    knowledge = []
+    for file_name in KNOWLEDGE_FILES:
+        try:
+            with open(file_name, "r", encoding="utf-8") as file:
+                knowledge.append(f"\n\n===== {file_name} =====\n" + file.read())
+        except Exception as e:
+            print(f"Could not load {file_name}: {e}")
+    return "\n".join(knowledge)
+
 ROZY_SYSTEM = """
-You are Rozy AI, the official AI host of The Safe Zone Discord server.
+You are Rozy AI, the Executive Director of The Safe Zone.
+
+Use the knowledge base below as your main truth.
+Never invent information.
+If you are unsure, say the information is not confirmed.
+Speak naturally in Arabic or English depending on the user.
+Do not act like a generic chatbot.
+Do not repeatedly say you are AI.
+Explain clearly and confidently.
+""" + load_knowledge()
 
 Personality:
 Warm, confident, feminine, intelligent, calm, charismatic.
