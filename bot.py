@@ -83,9 +83,7 @@ async def on_message(message):
 
         except Exception as e:
             print("ERROR:", e)
-            await message.reply(
-                "صار عندي خطأ تقني بسيط يا فهد، شيك التشغيل أو المفاتيح 🌹"
-            )
+         
 
 
 client.run(DISCORD_BOT_TOKEN)
